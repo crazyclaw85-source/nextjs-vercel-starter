@@ -44,10 +44,7 @@ export const appRouter = createTRPCRouter({
         })
       )
       .mutation(async ({ ctx, input }) => {
-        const result = await ctx.db
-          .insert(users)
-          .values(input)
-          .returning()
+        const result = await ctx.db.insert(users).values(input).returning()
         return result[0]
       }),
   }),
